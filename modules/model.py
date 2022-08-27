@@ -71,7 +71,7 @@ class BNReluRNN(nn.Module):
             hidden_state_dim: int = 512,  # dimension of RNN`s hidden state
             rnn_type: str = 'gru',  # type of RNN cell
             bidirectional: bool = True,  # if True, becomes a bidirectional rnn
-            dropout_p: float = 0.1,  # dropout probability
+            dropout_p: float = 0.3,  # dropout probability
     ):
         super(BNReluRNN, self).__init__()
         self.hidden_state_dim = hidden_state_dim
@@ -336,11 +336,11 @@ class DeepSpeech2Extractor(Conv2dExtractor):
                 nn.Conv2d(in_channels, out_channels, kernel_size=(41, 11), stride=(2, 2), padding=(20, 5), bias=False),
                 nn.BatchNorm2d(out_channels),
                 self.activation,
-                nn.Dropout(0.3),
+                nn.Dropout(0.5),
                 nn.Conv2d(out_channels, out_channels, kernel_size=(21, 11), stride=(2, 1), padding=(10, 5), bias=False),
                 nn.BatchNorm2d(out_channels),
                 self.activation,
-                nn.Dropout(0.3),
+                nn.Dropout(0.5),
 
             )
         )
@@ -458,7 +458,7 @@ class DeepSpeech2(EncoderModel):
             rnn_type='gru',
             num_rnn_layers: int = 5,
             rnn_hidden_dim: int = 512,
-            dropout_p: float = 0.1,
+            dropout_p: float = 0.3,
             bidirectional: bool = True,
             activation: str = 'hardtanh',
             device: torch.device = 'cuda',
@@ -557,7 +557,7 @@ def build_model(
         input_size=input_size,
         num_classes=len(vocab),
         rnn_type=config.rnn_type,
-        num_rnn_layers=config.num_encoder_layers,
+        num_rnn_layers=config.num_rnn_layers,
         rnn_hidden_dim=config.hidden_dim,
         dropout_p=config.dropout,
         bidirectional=config.use_bidirectional,
