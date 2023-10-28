@@ -1,5 +1,5 @@
 # Korean_AI_Speech_FS
-한국어AI 경진대회 Develop
+한국어AI 경진대회 Develop 
 
 # Dataset
 ### Dataset Name
@@ -70,4 +70,3 @@ nsml submit [세션명] [모델_checkpoint_번호]
 
 본 베이스라인 코드는 김수환 님께서 개발해 공개하신 kospeech (https://github.com/sooftware/kospeech) 를 기반으로 하였으며 
 NSML 플랫폼에서 사용 가능한 형태로 수정하였습니다.
-
